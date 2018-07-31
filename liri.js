@@ -56,7 +56,7 @@ var spotify = new Spotify({
 });
 var search = process.argv.slice(3).join(" ");
 
-if (userInput === "movie-this") {
+if (userInput === "movie-this" && search) {
     request("http://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
 
         // If the request was successful...
@@ -88,6 +88,40 @@ if (userInput === "movie-this") {
 
     })
 }
+
+if (userInput === "movie-this" && !search) {
+    request("http://www.omdbapi.com/?t=Mr_nobody&y=&plot=short&apikey=trilogy", function (error, response, body) {
+
+        // If the request was successful...
+        // Then log the body from the site!
+        console.log("##################################################");
+        console.log("=== Here is your Movie: ===: ")
+        console.log(" ");
+        console.log("Title - " + JSON.parse(body).Title);
+        console.log("--------------------------------------------------");
+        console.log("Genre - " + JSON.parse(body).Genre);
+                console.log(" ");
+        console.log("Rated - " + JSON.parse(body).Rated);
+        console.log(" ");
+        console.log("Plot - " + JSON.parse(body).Plot);
+        console.log(" ");
+        console.log("Actors - " + JSON.parse(body).Actors);
+        console.log(" ");
+        console.log(JSON.parse(body).Country);
+        console.log(" ");    
+        console.log(JSON.parse(body).Language);
+        console.log(" ");   
+        console.log("Imdb: "+JSON.parse(body).imdbRating);
+        console.log(" ");   
+        console.log("Rotten Tomatoes: "+JSON.parse(body).Ratings[1].Value);
+        console.log("##################################################");
+
+        // console.log(JSON.parse(body));
+        // console.log(JSON.parse(body));
+
+    })
+}
+
 else if (userInput === "spotify-this-song") {
 
 spotify.search({ type: 'track', query: search }, function (err, data) {
@@ -109,7 +143,7 @@ spotify.search({ type: 'track', query: search }, function (err, data) {
       console.log(" ");
 
 })}
-          else if (userInput = "do-what-it-says") {
+          else if (userInput === "do-what-it-says") {
             var readMe = fse.readFileSync('random.txt', 'utf8');
             
 spotify.search({ type: 'track', query: readMe }, function (err, data) {
