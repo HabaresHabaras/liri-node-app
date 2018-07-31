@@ -1,0 +1,27 @@
+{
+  "name": "liri",
+  "version": "1.7.1",
+  "description": "Twitter api, returns tweets when asked",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HabaresHabaras/liri-node-app.git"
+  },
+  "keywords": [],
+  "author": "Jp",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/HabaresHabaras/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/HabaresHabaras/liri-node-app#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "fs-extra": "^7.0.0",
+    "node-spotify-api": "^1.0.7",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {}
+}
