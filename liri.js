@@ -43,7 +43,7 @@ client.get('statuses/home_timeline', params, function (error, tweet, response) {
 
         }
         //created at
-    } 
+    }
 });
 
 var Spotify = require('node-spotify-api');
@@ -67,7 +67,7 @@ if (userInput === "movie-this" && search) {
         console.log("Title - " + JSON.parse(body).Title);
         console.log("--------------------------------------------------");
         console.log("Genre - " + JSON.parse(body).Genre);
-                console.log(" ");
+        console.log(" ");
         console.log("Rated - " + JSON.parse(body).Rated);
         console.log(" ");
         console.log("Plot - " + JSON.parse(body).Plot);
@@ -75,12 +75,12 @@ if (userInput === "movie-this" && search) {
         console.log("Actors - " + JSON.parse(body).Actors);
         console.log(" ");
         console.log(JSON.parse(body).Country);
-        console.log(" ");    
+        console.log(" ");
         console.log(JSON.parse(body).Language);
-        console.log(" ");   
-        console.log("Imdb: "+JSON.parse(body).imdbRating);
-        console.log(" ");   
-        console.log("Rotten Tomatoes: "+JSON.parse(body).Ratings[1].Value);
+        console.log(" ");
+        console.log("Imdb: " + JSON.parse(body).imdbRating);
+        console.log(" ");
+        console.log("Rotten Tomatoes: " + JSON.parse(body).Ratings[1].Value);
         console.log("##################################################");
 
         // console.log(JSON.parse(body));
@@ -100,7 +100,7 @@ if (userInput === "movie-this" && !search) {
         console.log("Title - " + JSON.parse(body).Title);
         console.log("--------------------------------------------------");
         console.log("Genre - " + JSON.parse(body).Genre);
-                console.log(" ");
+        console.log(" ");
         console.log("Rated - " + JSON.parse(body).Rated);
         console.log(" ");
         console.log("Plot - " + JSON.parse(body).Plot);
@@ -108,12 +108,12 @@ if (userInput === "movie-this" && !search) {
         console.log("Actors - " + JSON.parse(body).Actors);
         console.log(" ");
         console.log(JSON.parse(body).Country);
-        console.log(" ");    
+        console.log(" ");
         console.log(JSON.parse(body).Language);
-        console.log(" ");   
-        console.log("Imdb: "+JSON.parse(body).imdbRating);
-        console.log(" ");   
-        console.log("Rotten Tomatoes: "+JSON.parse(body).Ratings[1].Value);
+        console.log(" ");
+        console.log("Imdb: " + JSON.parse(body).imdbRating);
+        console.log(" ");
+        console.log("Rotten Tomatoes: " + JSON.parse(body).Ratings[1].Value);
         console.log("##################################################");
 
         // console.log(JSON.parse(body));
@@ -122,55 +122,57 @@ if (userInput === "movie-this" && !search) {
     })
 }
 
-else if (userInput === "spotify-this-song") {
+else if (userInput === "spotify-this") {
 
-spotify.search({ type: 'track', query: search }, function (err, data) {
+    spotify.search({ type: 'track', query: search }, function (err, data) {
 
-    if (err) {
-        return console.log(err);
-    }
-    console.log("#################################################");
-    console.log(" ");
-    console.log("Artist: " + data.tracks.items[0].artists[0].name);
-    console.log(" ");
-    console.log("Album: " + data.tracks.items[0].album.name);
-    console.log(" ");
-    console.log("Song: " + data.tracks.items[0].name);
-    console.log(" ");
-    console.log("Preview: " + data.tracks.items[0].artists[0].external_urls.spotify);
-    console.log(" ");
-    console.log("#################################################");
-      console.log(" ");
+        if (err) {
+            return console.log(err);
+        }
+        console.log("#################################################");
+        console.log(" ");
+        console.log("Artist: " + data.tracks.items[0].artists[0].name);
+        console.log(" ");
+        console.log("Album: " + data.tracks.items[0].album.name);
+        console.log(" ");
+        console.log("Song: " + data.tracks.items[0].name);
+        console.log(" ");
+        console.log("Preview: " + data.tracks.items[0].artists[0].external_urls.spotify);
+        console.log(" ");
+        console.log("#################################################");
+        console.log(" ");
 
-})}
-          else if (userInput === "do-what-it-says") {
-            var readMe = fse.readFileSync('random.txt', 'utf8');
-            
-spotify.search({ type: 'track', query: readMe }, function (err, data) {
+    })
+}
+else if (userInput === "do-what-it-says") {
+    var readMe = fse.readFileSync('random.txt', 'utf8');
 
-    if (err) {
-        return console.log(err);
-    }
-    console.log("#################################################");
-    console.log(" ");
-    console.log("Artist: " + data.tracks.items[0].artists[0].name);
-    console.log(" ");
-    console.log("Album: " + data.tracks.items[0].album.name);
-    console.log(" ");
-    console.log("Song: " + data.tracks.items[0].name);
-    console.log(" ");
-    console.log("Preview: " + data.tracks.items[0].artists[0].external_urls.spotify);
-    console.log(" ");
-    console.log("#################################################");
-      console.log(" ");
+    spotify.search({ type: 'track', query: readMe }, function (err, data) {
 
-})}
-          
+        if (err) {
+            return console.log(err);
+        }
+        console.log("#################################################");
+        console.log(" ");
+        console.log("Artist: " + data.tracks.items[0].artists[0].name);
+        console.log(" ");
+        console.log("Album: " + data.tracks.items[0].album.name);
+        console.log(" ");
+        console.log("Song: " + data.tracks.items[0].name);
+        console.log(" ");
+        console.log("Preview: " + data.tracks.items[0].artists[0].external_urls.spotify);
+        console.log(" ");
+        console.log("#################################################");
+        console.log(" ");
+
+    })
+}
+
 
 // liri must take these commands 
    // * `my-tweets`
 
- //   * `spotify-this-song`
+ //   * `spotify-this`
 
  //   * `movie-this'
 
